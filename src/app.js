@@ -10,12 +10,28 @@ const app = express();
 // app.get("/user", (req,res) =>{
 //     res.send({firstName: "Prince", College: "MSIT"});
 
-// })
+// })       
 
+app.get("/getuserData", (req,res) =>{
+    throw new Error("jkgifgdkjdfg"); 
+    res.send("user data sent");
+});
+
+
+app.use("/", (err,req,res,next) => {
+    if(err) {
+        res.status(500).send("Something went wrong!");
+    }
+});
+ 
 app.post("/user", (req,res) =>{
    // Save Data to the database
     res.send("Data saved successfully to the database");
 });
+
+
+
+
 
 // app.delete("/user", (req,res) =>{
 //     //Delete Data from the database
@@ -24,17 +40,17 @@ app.post("/user", (req,res) =>{
 
 
 // This will match all the HTTP method API calls to /test
-app.use("/test",(req,res,next) => {
-    // res.send("hello from the server");
-    console.log("Handling the route test");
-    res.send("1st Response");
-    next();
-},
-(req,res)=> {
-    console.log("Handling the second route 2!!");
-    res.send("2nd Response");
-}
-);
+// app.use("/test",(req,res,next) => {
+//     // res.send("hello from the server");
+//     console.log("Handling the route test");
+//     res.send("1st Response");
+//     next();
+// },
+// (req,res)=> {
+//     console.log("Handling the second route 2!!");
+//     res.send("2nd Response");
+// }
+// );
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");  
